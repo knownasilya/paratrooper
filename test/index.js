@@ -1,3 +1,7 @@
-var chai = require('chai');
+var test = require('tape');
 
-chai.should();
+test('an example test', function (t) {
+  var x = 'a string';
+  t.is(x, 'a string', 'example test');
+  t.end();
+});
