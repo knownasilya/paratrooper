@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var program = require('ltcdr');
 var path = require('path');
 var chalk = require('chalk');
 var scripts = require('../lib/scripts');
@@ -15,24 +15,19 @@ program
 
 // init action
 program.command('init [target]')
-  .description('Initializes the configuration files for the given [target] environment')
-  .option('-d, --directory <directory>', 'directory for deploy configuration files')
-  .action(actions.init)
-program.command('i [target]')
+  .alias('i')
   .description('Initializes the configuration files for the given [target] environment')
   .option('-d, --directory <directory>', 'directory for deploy configuration files')
   .action(actions.init)
 
 // deploy action
 program.command('deploy')
-  .action(actions.deploy)
-program.command('d')
+  .alias('d')
   .action(actions.deploy)
 
 // remove action
 program.command('remove')
-  .action(actions.remove)
-program.command('r')
+  .alias('r')
   .action(actions.remove)
 
 // catchall
