@@ -1,4 +1,4 @@
-# paratrooper
+# paratrooper [![Build Status][1]][2]
 A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 
 ## Installation
@@ -128,6 +128,8 @@ Tests are written using tape, and can be executed via `npm test`.
 
 ## Attribution
 
-This project is based off Martin Rue's [node-deploy][1].
+This project is based off Martin Rue's [node-deploy][3].
 
-[1]: https://github.com/martinrue/node-deploy
+[1]: https://travis-ci.org/knownasilya/paratrooper.png?branch=master
+[2]: https://travis-ci.org/knownasilya/paratrooper
+[3]: https://github.com/martinrue/node-deploy
