@@ -2,7 +2,7 @@
   "name": "paratrooper",
   "version": "0.1.1",
   "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
-  "main": "./bin/nd",
+  "main": "./bin/paratrooper",
   "author": "Martin Rue",
   "homepage": "https://github.com/knownasilya/paratrooper",
   "license": "BSD",
@@ -10,10 +10,11 @@
     "glob": "~3.2.1",
     "chalk": "^0.4.0",
     "commander": "^2.1.0",
-    "handlebars": "^1.3.0"
+    "handlebars": "^1.3.0",
+    "inquirer": "^0.4.1"
   },
   "scripts": {
-    "test": "node ./test"
+    "test": "node ./test | node_modules/.bin/tspec"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
-    "tape": "^2.10.2"
+    "tape": "^2.10.2",
+    "tap-spec": "^0.1.5"
   }
 }

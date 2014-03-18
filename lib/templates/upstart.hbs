@@ -1,9 +1,9 @@
-description "{{name}} node process"
+description "{{appName}} node process"
 start on runlevel [2]
 stop on runlevel [016]
 console owner
-chdir "{{path}}/{{name}}"
+chdir "{{serverAppPath}}/{{appName}}"
 env NODE_ENV=production
-exec node {{entry}} >> /var/log/{{name}}.log 2>&1
+exec node {{appEntryPoint}} >> /var/log/{{appName}}.log 2>&1
 respawn
 respawn limit 5 15
