@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "proxyquire": "^0.5.3",
-    "mocha": "^1.18.2"
+    "mocha": "^1.18.2",
+    "chai": "^1.9.0"
   }
 }
