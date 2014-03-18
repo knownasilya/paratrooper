@@ -1,6 +1,6 @@
 {
   "name": "paratrooper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
   "main": "./bin/paratrooper",
   "author": "Martin Rue",
