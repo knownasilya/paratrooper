@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var path = require('path');
+var scripts = require('../lib/scripts');
+var config = require('../lib/config');
+var deploy = require('../lib/deploy');
+var pkg = require('../package.json');
+var settingsFileName = 'deploy.json';
+
+program
+  .version(pkg.version)
+  .option('-b --branch [branch]', 'branch')
+  .option('-d --directory [directory]', 'directory');
+
+function init(branch, directory) {
+  directory = directory || 'deploy';
+
+  config.generate(function(settings) {
+    if (!config.validate(settings)) {
+      return;
+    }
+
+    var configPath = path.join(directory, settingsFileName);
+
+    scripts.generate(directory, settings);
+    config.save(configPath, settings);
+  });
+}
+
+function deployAction() {
+  getSettings(program, function(settings) {
+    console.log('deploying ' + settings.branch + ' ' + 'to ' + settings.server + ':' + settings.path + '/' + settings.name);
+    deploy.run(settings);
+  });
+}
+
+function remove() {
+  getSettings(program, function(settings) {
+    console.log('removing ' + settings.server + ':' + settings.path + '/' + settings.name);
+    deploy.remove(settings);
+  });
+}
+
+program.command('init')
+  .option('-b, --branch <branch>', 'git branch to use for deployment')
+  .option('-d, --directory <directory>', 'directory for deploy configuration files')
+  .action(init);
+program.command('i').action(init);
+program.command('deploy').action(deployAction);
+program.command('d').action(deployAction);
+program.command('remove').action(remove);
+program.command('r').action(remove);
+program.parse(process.argv);
+
+function getSettings(args, onFound) {
+  var settings = config.load(args.directory + '/deploy.json');
+
+  if (!settings) {
+    console.log('\'' + args.directory + '\' config directory not found in – run [nd init] first');
+    return process.exit(1);
+  }
+
+  settings.directory = args.directory;
+  settings.branch = args.branch;
+
+  return onFound(settings);
+}

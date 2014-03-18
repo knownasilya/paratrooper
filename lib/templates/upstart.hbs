@@ -1,0 +1,9 @@
+description "{{name}} node process"
+start on runlevel [2]
+stop on runlevel [016]
+console owner
+chdir "{{path}}/{{name}}"
+env NODE_ENV=production
+exec node {{entry}} >> /var/log/{{name}}.log 2>&1
+respawn
+respawn limit 5 15
