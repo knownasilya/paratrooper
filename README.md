@@ -1,16 +1,11 @@
-# node-deploy
-node-deploy is a tool for deploying a node web app to an upstart+nginx machine automatically.
+# paratrooper
+A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 
 ## Installation
 
 ### npm
 ```
-npm install -g node-deploy
-```
-
-### GitHub
-```
-npm install -g https://github.com/martinrue/node-deploy/tarball/master
+npm install -g paratrooper
 ```
 
 ## Prerequisites
@@ -130,3 +125,9 @@ The user + host address of the server, i.e. `root@yourserver.com`.
 ## Testing
 
 Tests are written using tape, and can be executed via `npm test`.
+
+## Attribution
+
+This project is based off Martin Rue's [node-deploy][1].
+
+[1]: https://github.com/martinrue/node-deploy

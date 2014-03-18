@@ -1,10 +1,10 @@
 {
-  "name": "node-deploy",
-  "version": "0.0.3",
-  "description": "Makes deploying node web apps to nginx+upstart machines easy",
-  "main": "node-deploy.js",
+  "name": "paratrooper",
+  "version": "0.1.0",
+  "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
+  "main": "./bin/nd",
   "author": "Martin Rue",
-  "homepage": "https://github.com/martinrue/node-deploy",
+  "homepage": "https://github.com/knownasilya/paratrooper",
   "license": "BSD",
   "dependencies": {
     "glob": "~3.2.1",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/martinrue/node-deploy.git"
+    "url": "https://github.com/knownasilya/paratrooper.git"
   },
   "bin": {
     "nd": "./bin/nd"
