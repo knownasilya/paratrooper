@@ -20,7 +20,8 @@
     "url": "https://github.com/knownasilya/paratrooper.git"
   },
   "bin": {
-    "nd": "./bin/nd"
+    "pt": "./bin/paratrooper",
+    "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
     "tape": "^2.10.2"
