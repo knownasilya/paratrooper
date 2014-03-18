@@ -5,15 +5,18 @@
 
 A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 
+
 ## Installation
 
-### npm
 ```
 npm install -g paratrooper
 ```
 
+
 ## Prerequisites
+
 The remote machine must have `git`, `nginx`, `node` and `npm` installed before deployments can be made to it. The machine should also be configured for remote access via ssh.
+
 
 ## Usage
 ```no-highlight
