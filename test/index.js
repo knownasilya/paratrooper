@@ -1,7 +1,8 @@
-var test = require('tape');
+var configTests = require('./unit/config'),
+  chai = require('chai');
 
-test('an example test', function (t) {
-  var x = 'a string';
-  t.is(x, 'a string', 'example test');
-  t.end();
+chai.should();
+
+describe('Unit', function () {
+  describe('config', configTests);
 });

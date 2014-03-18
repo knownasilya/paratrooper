@@ -97,7 +97,7 @@ The user + host address of the server, i.e. `root@yourserver.com`.
 
 ## Testing
 
-Tests are written using tape, and can be executed via `npm test`.
+Tests are written using mocha/chai, and can be executed via `npm test`.
 
 ## Attribution
 

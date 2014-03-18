@@ -14,7 +14,7 @@
     "ltcdr": "^2.2.1"
   },
   "scripts": {
-    "test": "node ./test | node_modules/.bin/tspec"
+    "test": "node node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
-    "tape": "^2.10.2",
-    "tap-spec": "^0.1.5"
+    "proxyquire": "^0.5.3",
+    "mocha": "^1.18.2"
   }
 }
