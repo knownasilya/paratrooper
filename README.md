@@ -59,10 +59,6 @@ After running `pt init`, you'll be asked a series of questions. Here's what each
 
 This is the public URL your app will be served from.
 
-####app name
-
-Specifies the name of the app directory and the nginx/upstart config files.
-
 ####upstream port
 
 The port the node app listens on. This is needed to properly link the node process with the upstream nginx server.
