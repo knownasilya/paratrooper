@@ -25,9 +25,9 @@ pt <init | deploy | remove> [target] -d <directory>
 
 _note: You can also use `paratrooper` instead of `pt` for verbosity._
 
-* Run `pt init` to generate the deploy config files. You need to commit and push these files before deploying.
-* Run `pt deploy` to begin a deployment.
-* Run `pt remove` to stop and remove the app from the server.
+* Run `pt init [target]` to generate the deploy config files. You need to commit and push these files before deploying.
+* Run `pt deploy [target]` to begin a deployment.
+* Run `pt remove [target]` to stop and remove the app from the server.
 
 ### Options
 ####[target]
