@@ -21,13 +21,15 @@ program.command('init [target]')
   .action(actions.init)
 
 // deploy action
-program.command('deploy')
+program.command('deploy [target]')
   .alias('d')
+  .option('-d, --directory <directory>', 'directory for deploy configuration files')
   .action(actions.deploy)
 
 // remove action
-program.command('remove')
+program.command('remove [target]')
   .alias('r')
+  .option('-d, --directory <directory>', 'directory for deploy configuration files')
   .action(actions.remove)
 
 // catchall
