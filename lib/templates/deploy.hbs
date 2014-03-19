@@ -1,0 +1,77 @@
+check_upstart_service(){
+  return pgrep $1 > /dev/null 2>&1
+}
+
+for dependency in nginx git node npm; do
+if ! command -v $dependency 2> /dev/null; then
+  echo error: server missing one of the following dependencies: nginx, git, node or npm;
+  exit 1;
+fi;
+done;
+
+# check the supplied sites-enabled path is valid
+if [ ! -d "{{sitesEnabledPath}}" ]; then 
+  echo error: nginx sites-enabled path {{sitesEnabledPath}} does not exist;
+  exit 1;
+fi;
+
+# add SSH exception for github.com in order to connect without interruption
+if ! grep -Fxq 'Host github.com' ~/.ssh/config; then 
+  echo -e 'Host github.com
+    StrictHostKeyChecking no
+    ' >> ~/.ssh/config;
+fi;
+
+# create the 'app path on server' directory if it doesn't exist
+if [ ! -d "{{serverAppPath}}" ]; then
+  mkdir -p "{{serverAppPath}}";
+fi;
+
+# stop any existing app instance
+if check_upstart_service {{appName}}; then
+  sudo stop {{appName}} > /dev/null;
+fi;
+
+# if there's no repo, clone it for the first time
+if [ ! -d "{{appPath}}" ]; then
+  git clone {{cloneUrl}} "{{appPath}}" > /dev/null;
+  {{errorCheck errors.cloning}}
+fi;
+
+# move into application directory
+cd "{{appPath}}";
+
+# fetch upstream changes on all branches
+git fetch > /dev/null;
+{{errorCheck 'failed to fetch upstream changes'}}
+
+# create tracking branch – may fail if there's already one, but that's ok
+git branch {{branch}} origin/{{branch}} > /dev/null;
+
+# checkout new/existing tracking branch
+git checkout {{branch}} > /dev/null;
+{{errorCheck errors.branchCheckout}}
+
+# pull latest changes from branch
+
+git pull origin {{branch}} > /dev/null;
+{{errorCheck errors.branchPull}}
+
+# install missing npm dependencies
+npm install > /dev/null;
+{{errorCheck 'failed to install npm dependencies'}}
+
+# copy the nginx and upstart config files to correct locations
+sudo cp -f "{{nginxFrom}}" {{nginxTo}};
+sudo cp -f "{{upstartFrom}}" {{upstartTo}};
+
+# reload nginx config
+sudo nginx -s reload > /dev/null;
+{{errorCheck 'failed to reload nginx configuration'}}
+
+# start a new app instance
+if check_upstart_service {{appName}}; then
+  sudo start {{appName}} > /dev/null;
+  {{errorCheck 'application failed to start'}}
+fi;
+exit;

@@ -1,0 +1,2 @@
+initctl status "{{appName}}" | grep process > /dev/null;
+{{errorCheck 'application failed to start'}}

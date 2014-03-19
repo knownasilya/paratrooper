@@ -4,6 +4,7 @@ stop on runlevel [016]
 console owner
 chdir "{{serverAppPath}}/{{appName}}"
 env NODE_ENV={{nodeEnv}}
-exec node {{appEntryPoint}} >> /var/log/{{appName}}.log 2>&1
+env PORT={{upstreamPort}}
+exec npm start >> /var/log/{{appName}}.log 2>&1
 respawn
 respawn limit 5 15
