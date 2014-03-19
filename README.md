@@ -20,7 +20,7 @@ The remote machine must have `git`, `nginx`, `node` and `npm` installed before d
 
 ## Usage
 ```no-highlight
-pt [init | deploy | remove] -b <branch> -d <directory>
+pt <init | deploy | remove> [target] -d <directory>
 ```
 
 _note: You can also use `paratrooper` instead of `pt` for verbosity._
@@ -30,14 +30,15 @@ _note: You can also use `paratrooper` instead of `pt` for verbosity._
 * Run `pt remove` to stop and remove the app from the server.
 
 ### Options
-#### -b &lt;branch&gt;
+####[target]
 
-paratrooper will deploy from the `master` branch. Use `-b <branch>` to deploy a different branch. 
-The new branch will be deployed over the same application – it's just a means of deploying from an alternative branch.
+Specifies the type of environment, and is an arbitrary value based on your workflow. Target is usually `alpha`, `beta`, `staging`, or `production`,
+but you are free to specify whatever value you want. Each target has it's own set of configurations. If a target isn't specified, then by default it's `production`.
 
 ####-d &lt;directory&gt;
 
-Config files are stored in the `deploy` directory unless you specify a custom directory via `-d <directory>`. Example: `pt deploy -d deployconfigs`
+Config files are stored in the `deploy` directory unless you specify a custom directory via `-d <directory>`. Example: `pt deploy -d deployconfigs`.
+If this option is used with `pt init`, it must be used with all other commands.
 
 ##Example
 First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
@@ -84,7 +85,11 @@ The URL of the repo. The repo is cloned on the first deploy and then pulled from
 
 ####server SSH address
 
-The user + host address of the server, i.e. `root@yourserver.com`.
+The user + host address of the server, i.e. `root@yourserver.com` or `myname@123.23.211.23` or `deployuser@someinstance`.
+
+####branch
+
+The origin branch of your repo that paratrooper will pull from to make the deployment.
 
 ## Notes
 - Following a successful deploy, `pt` will wait a further 15 seconds (to account for the configured respawn limits of upstart) to verify the app process is still alive and well.
