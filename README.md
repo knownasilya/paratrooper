@@ -20,7 +20,7 @@ The remote machine must have `git`, `nginx`, `node` and `npm` installed before d
 
 ## Usage
 ```no-highlight
-pt <init | deploy | remove> [target] -d <directory>
+pt <init|deploy|remove> [target] -d <directory>
 ```
 
 _note: You can also use `paratrooper` instead of `pt` for verbosity._
@@ -63,21 +63,9 @@ This is the public URL your app will be served from.
 
 Specifies the name of the app directory and the nginx/upstart config files.
 
-####app entry point
-
-The app's main `.js` file. This is the file that `node` will execute when your app starts.
-
 ####upstream port
 
 The port the node app listens on. This is needed to properly link the node process with the upstream nginx server.
-
-####app path on server
-
-The directory the app will be cloned into and run from on the server.
-
-####nginx sites-enabled path
-
-The path of the nginx `sites-enabled` directory. The nginx config file will be copied here.
 
 ####git clone URL
 
