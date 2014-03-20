@@ -13,6 +13,17 @@ var config = require('../../lib/config'),
   };
 
 module.exports = function () {
+  var root;
+
+  before(function () {
+    root = process.cwd();  
+    process.chdir('test/data');
+  });
+
+  after(function () {
+    process.chdir(root);
+  });
+
   it('generates default target', function () {
     
   });
@@ -20,7 +31,7 @@ module.exports = function () {
   it('loads saved config', function (done) {
     var expected = validConfig;
 
-    config.load('tmp/deploy/production', function (loaded) {
+    config.load('deploy/production', function (loaded) {
       loaded.should.deep.equal(expected);
       done();
     });

@@ -1,0 +1,12 @@
+{
+  "appUrl": "tmp.com",
+  "appName": "tmp",
+  "appEntryPoint": "./bin/paratrooper",
+  "cloneUrl": "https://github.com/knownasilya/paratrooper.git",
+  "branch": "master",
+  "nodeEnv": "production",
+  "upstreamPort": 3000,
+  "serverAppPath": "/var/www",
+  "sitesEnabledPath": "/etc/nginx/sites-enabled",
+  "sshAddress": "root@localhost"
+}

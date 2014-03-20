@@ -3,7 +3,7 @@ var chai = require('chai');
   path = require('path'),
   configTests = require('./unit/config'),
   actionsTests = require('./unit/actions'),
-  tmpDir = path.join(__dirname, 'tmp');
+  tmpDir = path.join(__dirname, 'data');
 
 chai.should();
 
