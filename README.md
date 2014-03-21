@@ -92,7 +92,7 @@ Tests are written using mocha/chai, and can be executed via `npm test`.
 
 This project is based off Martin Rue's [node-deploy][3].
 
-[1]: https://travis-ci.org/knownasilya/paratrooper.png?branch=master
+[1]: https://travis-ci.org/knownasilya/paratrooper.svg?branch=master
 [2]: https://travis-ci.org/knownasilya/paratrooper
 [3]: https://github.com/martinrue/node-deploy
 [4]: http://en.wikipedia.org/wiki/Paratrooper
