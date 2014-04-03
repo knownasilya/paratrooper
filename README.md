@@ -35,17 +35,17 @@ _note: You can also use `paratrooper` instead of `pt` for verbosity._
 Paratrooper uses the project's `package.json` file to present you with some sane defaults, so it's recommended to
 have the `name` and `repository` fields filled out before executing `pt init [target]`.
 
-####[target]
+#### [target]
 
 Specifies the type of environment, and is an arbitrary value based on your workflow. Target is usually `alpha`, `beta`, `staging`, or `production`,
 but you are free to specify whatever value you want. Each target has it's own set of configurations. If a target isn't specified, then by default it's `production`.
 
-####-d &lt;directory&gt;
+#### -d &lt;directory&gt;
 
 Config files are stored in the `deploy` directory unless you specify a custom directory via `-d <directory>`. Example: `pt deploy -d deployconfigs`.
 If this option is used with `pt init`, it must be used with all other commands.
 
-##Example
+## Example
 First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
 
 ```no-highlight
@@ -60,21 +60,32 @@ pt deploy
 ## Questions
 After running `pt init`, you'll be asked a series of questions. Here's what each answer is used for:
 
-####app url
+#### What is the URL of your app?
 
-This is the public URL your app will be served from.
+This is the public URL your app will be served from on the server you are deploying to.
 
-####upstream port
-
-The port the node app listens on. This is needed to properly link the node process with the upstream nginx server.
-
-####git clone URL
+#### What is the app's git clone URL?
 
 The URL of the repo. The repo is cloned on the first deploy and then pulled from thereafter.
 
-####server SSH address
+#### Which branch should be used for deployment?
 
+This is the git branch that you want you application source to be cloned/pulled from.
+
+#### What value would you like to use for NODE_ENV?
+
+This is usually `production` or maybe `development`, and dictates how your app is built or served.
+
+#### What port is your app listening on?
+
+The port the node app listens on. This is needed to properly link the node process
+with the upstream nginx server.
+
+#### What is the server's SSH address?
+
+The SSH address for your deployment server, so we can setup/deploy your app.
 The user + host address of the server, i.e. `root@yourserver.com` or `myname@123.23.211.23` or `deployuser@someinstance`.
+
 
 ####branch
 
