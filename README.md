@@ -1,4 +1,4 @@
-# paratrooper [![Build Status][1]][2]
+# paratrooper [![Build Status][1]][2] [![NPM version][5]][6]
 
 > They are used for tactical advantage as they can be inserted into the battlefield from the air, 
 > thereby allowing them to be positioned in areas not accessible by land. -- [Wikipedia][4]
@@ -97,7 +97,9 @@ Tests are written using mocha/chai, and can be executed via `npm test`.
 
 This project is based off Martin Rue's [node-deploy][3].
 
-[1]: https://travis-ci.org/knownasilya/paratrooper.png?branch=master
+[1]: https://travis-ci.org/knownasilya/paratrooper.svg?branch=master
 [2]: https://travis-ci.org/knownasilya/paratrooper
 [3]: https://github.com/martinrue/node-deploy
 [4]: http://en.wikipedia.org/wiki/Paratrooper
+[5]: https://badge.fury.io/js/paratrooper.svg
+[6]: http://badge.fury.io/js/paratrooper
