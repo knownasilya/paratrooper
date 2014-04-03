@@ -29,7 +29,12 @@ _note: You can also use `paratrooper` instead of `pt` for verbosity._
 * Run `pt deploy [target]` to begin a deployment.
 * Run `pt remove [target]` to stop and remove the app from the server.
 
+
 ### Options
+
+Paratrooper uses the projects `package.json` file to present you with some sane defaults, so it's recommended to
+have the `name` and `repository` fields filled out before doing `pt init [target]`.
+
 ####[target]
 
 Specifies the type of environment, and is an arbitrary value based on your workflow. Target is usually `alpha`, `beta`, `staging`, or `production`,
