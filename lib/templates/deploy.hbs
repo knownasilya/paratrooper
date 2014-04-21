@@ -16,10 +16,12 @@ if [ ! -d "{{sitesEnabledPath}}" ]; then
 fi;
 
 # add SSH exception for github.com in order to connect without interruption
-if ! grep -Fxq 'Host github.com' ~/.ssh/config; then 
-  echo -e 'Host github.com
-    StrictHostKeyChecking no
-    ' >> ~/.ssh/config;
+if -e ~/.ssh/config; then
+  if ! grep -Fxq 'Host github.com' ~/.ssh/config; then 
+    echo -e 'Host github.com
+      StrictHostKeyChecking no
+      ' >> ~/.ssh/config;
+  fi;
 fi;
 
 # create the 'app path on server' directory if it doesn't exist
