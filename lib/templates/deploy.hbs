@@ -16,7 +16,7 @@ if [ ! -d "{{sitesEnabledPath}}" ]; then
 fi;
 
 # add SSH exception for github.com in order to connect without interruption
-if -e ~/.ssh/config; then
+if [ -f ~/.ssh/config ]; then
   if ! grep -Fxq 'Host github.com' ~/.ssh/config; then 
     echo -e 'Host github.com
       StrictHostKeyChecking no
@@ -55,7 +55,6 @@ git checkout {{branch}} > /dev/null;
 {{errorCheck errors.branchCheckout}}
 
 # pull latest changes from branch
-
 git pull origin {{branch}} > /dev/null;
 {{errorCheck errors.branchPull}}
 
