@@ -17,7 +17,7 @@ fi;
 
 # SSH forward for bitbucket.org and github.com
 if [ -f ~/.ssh/config ]; then
-  cp ~/.ssh/config ~/.ssh/config.bak;
+  cp -f ~/.ssh/config ~/.ssh/config.bak;
 fi;
 echo -e 'Host github.com\n\tStrictHostKeyChecking no\n\tForwardAgent yes\nHost bitbucket.org\n\tStrictHostKeyChecking no\n\tForwardAgent yes' >> ~/.ssh/config;
 
