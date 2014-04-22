@@ -47,7 +47,7 @@ If this option is used with `pt init`, it must be used with all other commands.
 
 #### -i &lt;sshKeyFile&gt;
 
-Pass through the `ssh -i` option for working with certain servers where you don't have a username, but a key file instead.
+Pass through the `ssh -i` option for working with certain servers where you don't have a password, but a key file instead.
 This option is available for `deploy` and `remove` commands.
 
 ## Example
