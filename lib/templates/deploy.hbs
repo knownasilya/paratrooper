@@ -2,6 +2,7 @@ check_upstart_service(){
   return pgrep $1 > /dev/null 2>&1
 }
 
+echo 'Installing server dependencies..';
 for dependency in nginx git node npm; do
 if ! command -v $dependency 2> /dev/null; then
   echo error: server missing one of the following dependencies: nginx, git, node or npm;
@@ -15,24 +16,29 @@ if [ ! -d "{{sitesEnabledPath}}" ]; then
   exit 1;
 fi;
 
-# SSH forward for bitbucket.org and github.com
-if [ -f ~/.ssh/config ]; then
-  cp -f ~/.ssh/config ~/.ssh/config.bak;
-fi;
-echo -e 'Host github.com\n\tStrictHostKeyChecking no\n\tForwardAgent yes\nHost bitbucket.org\n\tStrictHostKeyChecking no\n\tForwardAgent yes' >> ~/.ssh/config;
-
 # create the 'app path on server' directory if it doesn't exist
+echo 'Preparing application project..';
 if [ ! -d "{{serverAppPath}}" ]; then
   mkdir -p "{{serverAppPath}}";
+
+  # SSH forward for bitbucket.org and github.com
+  if [ -f ~/.ssh/config ]; then
+    cp -f ~/.ssh/config ~/.ssh/config.bak;
+  fi;
+
+  # Create ~/.ssh/config for github and bitbucket
+  echo -e 'Host github.com\n\tStrictHostKeyChecking no\n\tForwardAgent yes\nHost bitbucket.org\n\tStrictHostKeyChecking no\n\tForwardAgent yes' >> ~/.ssh/config;
 fi;
 
 # stop any existing app instance
 if check_upstart_service {{appName}}; then
+  echo 'Stopping previously running application instances..';
   sudo stop {{appName}} > /dev/null;
 fi;
 
 # if there's no repo, clone it for the first time
 if [ ! -d "{{appPath}}" ]; then
+  echo 'Cloning project for the first time..';
   git clone {{cloneUrl}} "{{appPath}}" > /dev/null;
   {{errorCheck errors.cloning}}
 fi;
@@ -41,6 +47,7 @@ fi;
 cd "{{appPath}}";
 
 # fetch upstream changes on all branches
+echo 'Updating project with latest changes..';
 git fetch > /dev/null;
 {{errorCheck 'failed to fetch upstream changes'}}
 
@@ -60,18 +67,23 @@ git pull origin {{branch}} > /dev/null;
 
 # copy app config script if exists
 if [ -f {{appConfig}} ]; then
+  echo 'Copying application configuration..';
   if [ -d {{appPath}}/server/ ]; then
     cp {{appConfig}} server/{{appConfigName}};
+    echo 'Copied configuration to `{{appPath}}/server/{{appConfigName}}`.';
   else
     cp {{appConfig}} {{appConfigName}};
+    echo 'Copied configuration to `{{appPath}}/{{appConfigName}}`.';
   fi;
 fi;
 
 # install missing npm dependencies
+echo 'Installing application dependencies..';
 npm install > /dev/null;
 {{errorCheck 'failed to install npm dependencies'}}
 
 # copy the nginx and upstart config files to correct locations
+echo 'Preparing NGINX to start application..';
 sudo cp -f "{{nginxFrom}}" {{nginxTo}};
 sudo cp -f "{{upstartFrom}}" {{upstartTo}};
 
@@ -81,6 +93,7 @@ sudo nginx -s reload > /dev/null;
 
 # start a new app instance
 if check_upstart_service {{appName}}; then
+  echo 'Starting application..';
   sudo start {{appName}} > /dev/null;
   {{errorCheck 'application failed to start'}}
 fi;
