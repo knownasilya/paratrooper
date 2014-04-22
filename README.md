@@ -75,7 +75,7 @@ The URL of the repo. The repo is cloned on the first deploy and then pulled from
 
 #### Which branch should be used for deployment?
 
-This is the git branch that you want you application source to be cloned/pulled from.
+This is the git branch that you want your application source to be cloned/pulled from.
 
 #### What value would you like to use for NODE_ENV?
 
