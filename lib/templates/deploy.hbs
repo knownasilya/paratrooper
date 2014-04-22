@@ -51,6 +51,9 @@ git branch {{branch}} origin/{{branch}} > /dev/null;
 git checkout {{branch}} > /dev/null;
 {{errorCheck errors.branchCheckout}}
 
+# clean project directory
+git clean -xdf
+
 # pull latest changes from branch
 git pull origin {{branch}} > /dev/null;
 {{errorCheck errors.branchPull}}
