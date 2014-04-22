@@ -58,6 +58,15 @@ git clean -xdf
 git pull origin {{branch}} > /dev/null;
 {{errorCheck errors.branchPull}}
 
+# copy app config script if exists
+if [ -f {{appConfig}} ]; then
+  if [ -d {{appPath}}/server/ ]; then
+    cp {{appConfig}} server/{{appConfigName}};
+  else
+    cp {{appConfig}} {{appConfigName}};
+  fi;
+fi;
+
 # install missing npm dependencies
 npm install > /dev/null;
 {{errorCheck 'failed to install npm dependencies'}}
