@@ -45,7 +45,7 @@ but you are free to specify whatever value you want. Each target has it's own se
 Config files are stored in the `deploy` directory unless you specify a custom directory via `-d <directory>`. Example: `pt deploy -d deployconfigs`.
 If this option is used with `pt init`, it must be used with all other commands.
 
-### -i &lt;sshKeyFile&gt;
+#### -i &lt;sshKeyFile&gt;
 
 Pass through the `ssh -i` option for working with certain servers where you don't have a username, but a key file instead.
 This option is available for `deploy` and `remove` commands.
