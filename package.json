@@ -26,10 +26,7 @@
     "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
-    "chai": "^1.9.0",
-    "mocha": "^1.18.2",
     "proxyquire": "^0.6.0",
-    "sinon": "^1.9.0",
     "tap-spec": "^0.1.9",
     "tape": "^2.12.3"
   }
