@@ -4,6 +4,7 @@
 > thereby allowing them to be positioned in areas not accessible by land. -- [Wikipedia][4]
 
 A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
+Tested with [Github][github] and [Bitbucket][bitbucket] repositories.
 
 
 ## Installation
@@ -121,3 +122,5 @@ This project is based off Martin Rue's [node-deploy][3].
 [6]: http://badge.fury.io/js/paratrooper
 [7]: https://david-dm.org/knownasilya/paratrooper.svg
 [8]: https://david-dm.org/knownasilya/paratrooper
+[github]: https://github.com
+[bitbucket]: https://bitbucket.org
