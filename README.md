@@ -1,4 +1,4 @@
-# paratrooper [![Build Status][1]][2] [![NPM version][5]][6]
+# paratrooper [![Build Status][1]][2] [![NPM version][5]][6] [![Dependencies][7]][8]
 
 > They are used for tactical advantage as they can be inserted into the battlefield from the air, 
 > thereby allowing them to be positioned in areas not accessible by land. -- [Wikipedia][4]
@@ -119,3 +119,5 @@ This project is based off Martin Rue's [node-deploy][3].
 [4]: http://en.wikipedia.org/wiki/Paratrooper
 [5]: https://badge.fury.io/js/paratrooper.svg
 [6]: http://badge.fury.io/js/paratrooper
+[7]: https://david-dm.org/knownasilya/paratrooper.svg
+[8]: https://david-dm.org/knownasilya/paratrooper
