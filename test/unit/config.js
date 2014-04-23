@@ -35,12 +35,11 @@ module.exports = function (d) {
 
   d.test('generates default target', function (t) {
     config.generate(pkg, 'deploy/test', function (answers) {
-      console.log('inside');
       t.deepEqual(answers, validConfig);
+      t.ok(fs.existsSync('./deploy/test/paratrooper.json'));
       t.end();
     });    
 
-    t.ok(fs.existsSync('./deploy/test/paratrooper.json'));
   });
 
   d.test('loads saved config', function (t) {
