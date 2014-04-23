@@ -93,10 +93,6 @@ The SSH address for your deployment server, so we can setup/deploy your app.
 The user + host address of the server, i.e. `root@yourserver.com` or `myname@123.23.211.23` or `deployuser@someinstance`.
 
 
-####branch
-
-The origin branch of your repo that paratrooper will pull from to make the deployment.
-
 ## Notes
 - Following a successful deploy, `pt` will wait a further 15 seconds (to account for the configured respawn limits of upstart) to verify the app process is still alive and well.
 
