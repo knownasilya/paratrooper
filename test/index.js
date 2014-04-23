@@ -1,19 +1,16 @@
-var chai = require('chai');
+var test = require('tape'), 
   fs = require('fs'),
   path = require('path'),
   configTests = require('./unit/config'),
   actionsTests = require('./unit/actions'),
   tmpDir = path.join(__dirname, 'data');
 
-chai.should();
 
-describe('Unit', function () {
-  before(function () {
-    if (!fs.existsSync(tmpDir)) {
-      fs.mkdirSync(tmpDir);
-    }
-  });
+test('Unit', function (t) {
+  if (!fs.existsSync(tmpDir)) {
+    fs.mkdirSync(tmpDir);
+  }
 
-  describe('config', configTests);
-  describe('actions', actionsTests);
+  t.test('::CONFIG::', configTests);
+  t.test('::ACTIONS::', actionsTests);
 });

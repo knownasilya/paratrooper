@@ -1,11 +1,10 @@
-var proxyquire = require('proxyquire'),
-  actions = require('../../lib/actions'),
-  sinon = require('sinon');
+var actions = require('../../lib/actions');
 
-module.exports = function () {
-  it('actions throw errors with invalid arguments', function () {
-    actions.init.should.throw(Error);
-    actions.deploy.should.throw(Error);
-    actions.remove.should.throw(Error);
+module.exports = function (d) {
+  d.test('actions throw errors with invalid arguments', function (t) {
+    t.throws(actions.init, Error);
+    t.throws(actions.deploy, Error);
+    t.throws(actions.remove, Error);
+    t.end();
   });
 };

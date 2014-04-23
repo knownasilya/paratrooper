@@ -1,9 +1,24 @@
-var config = require('../../lib/config'),
+var proxyquire = require('proxyquire'),
+  fs = require('fs'),
+  pkg = {
+    name: "tmp",
+    repository: {
+      type: 'git',
+      url: 'http://hellotest.git'
+    }
+  },
+  mockAnswers = {
+    appUrl: 'tmp.com',
+    cloneUrl: 'http://hellotest.git',
+    branch: 'master',
+    nodeEnv: 'production',
+    upstreamPort: 3000,
+    sshAddress: 'root@localhost'
+  },
   validConfig = {
     "appUrl": "tmp.com",
-    "appName": "tmp",
-    "appEntryPoint": "./bin/paratrooper",
-    "cloneUrl": "https://github.com/knownasilya/paratrooper.git",
+    "appName": "tmp.com",
+    "cloneUrl": "http://hellotest.git",
     "branch": "master",
     "nodeEnv": "production",
     "upstreamPort": 3000,
@@ -12,28 +27,32 @@ var config = require('../../lib/config'),
     "sshAddress": "root@localhost"
   };
 
-module.exports = function () {
-  var root;
+config = proxyquire('../../lib/config', { 'inquirer': { prompt: promptStub } });
 
-  before(function () {
-    root = process.cwd();  
-    process.chdir('test/data');
+module.exports = function (d) {
+  var root = process.cwd();  
+  process.chdir('test/data');
+
+  d.test('generates default target', function (t) {
+    config.generate(pkg, 'deploy/test', function (answers) {
+      console.log('inside');
+      t.deepEqual(answers, validConfig);
+      t.end();
+    });    
+
+    t.ok(fs.existsSync('./deploy/test/paratrooper.json'));
   });
 
-  after(function () {
-    process.chdir(root);
-  });
-
-  it('generates default target', function () {
-    
-  });
-
-  it('loads saved config', function (done) {
+  d.test('loads saved config', function (t) {
     var expected = validConfig;
 
-    config.load('deploy/production', function (loaded) {
-      loaded.should.deep.equal(expected);
-      done();
+    config.load('deploy/test', function (loaded) {
+      t.deepEqual(loaded, expected);
+      t.end();
     });
   });
 };
+
+function promptStub (prompts, cb) {
+  cb(mockAnswers);
+}
