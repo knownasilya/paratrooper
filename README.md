@@ -51,6 +51,10 @@ If this option is used with `pt init`, it must be used with all other commands.
 Pass through the `ssh -i` option for working with certain servers where you don't have a password, but a key file instead.
 This option is available for `deploy` and `remove` commands.
 
+### Target App Config
+
+If you create a `config.json` in your target folder, it will be copied to the app root folder in that environment, or into `/server` if that folder exists. This can be anything from db config, to any other general purpose application configuration file.
+
 ## Example
 First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
 
