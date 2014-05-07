@@ -13,7 +13,9 @@
     "handlebars": "^1.3.0",
     "inquirer": "^0.4.1",
     "ltcdr": "^2.2.1",
-    "mkdirp": "^0.4.0"
+    "mkdirp": "^0.4.0",
+    "readable-stream": "^1.0.27-1",
+    "ssh2": "^0.2.22"
   },
   "scripts": {
     "test": "node test/index.js | tspec"
