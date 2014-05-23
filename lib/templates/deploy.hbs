@@ -42,9 +42,9 @@ if check_upstart_service {{appName}}; then
 fi;
 
 # if there's no repo, clone it for the first time
-if [ ! -d "{{appPath}}" ]; then
+if [ ! -d "{{repoPath}}" ]; then
   echo 'Cloning project for the first time..';
-  git clone {{cloneUrl}} "{{appPath}}" > /dev/null;
+  git clone {{cloneUrl}} "{{repoPath}}" > /dev/null;
   {{errorCheck errors.cloning}}
 fi;
 
