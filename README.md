@@ -20,6 +20,7 @@ The remote machine must have `git`, `nginx`, `node` and `npm` installed before d
 
 
 ## Usage
+
 ```no-highlight
 pt <init|deploy|remove> [target] -d <directory>
 ```
@@ -29,6 +30,24 @@ _note: You can also use `paratrooper` instead of `pt` for verbosity._
 * Run `pt init [target]` to generate the deploy config files. You need to commit and push these files before deploying.
 * Run `pt deploy [target]` to begin a deployment.
 * Run `pt remove [target]` to stop and remove the app from the server.
+
+If you omit the `[target]` for `deploy` or `remove` commands, then you'll either get a list of
+available targets, or it will automatically select the target, if you only have one.
+
+
+## Example
+
+First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
+
+```no-highlight
+pt init
+```
+
+Commit your repo with the new deplyoment directory and it's contents, then deploy.
+
+```no-highlight
+pt deploy
+```
 
 
 ### Options
@@ -56,19 +75,8 @@ This value defaults to the root of the repository.
 Pass through the `ssh -i` option for working with certain servers where you don't have a password, but a key file instead.
 This option is available for `deploy` and `remove` commands.
 
-## Example
-First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
-
-```no-highlight
-pt init
-```
-Commit your repo with the new deplyoment directory and it's contents, then deploy.
-
-```no-highlight
-pt deploy
-```
-
 ## Questions
+
 After running `pt init`, you'll be asked a series of questions. Here's what each answer is used for:
 
 #### What is the URL of your app?
