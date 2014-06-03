@@ -15,7 +15,7 @@
     "ltcdr": "^2.2.1",
     "mkdirp": "^0.4.0",
     "readable-stream": "^1.0.27-1",
-    "ssh2": "git://github.com/mscdex/ssh2.git"
+    "ssh2": "^0.2.25"
   },
   "scripts": {
     "test": "node test/index.js | tspec"
