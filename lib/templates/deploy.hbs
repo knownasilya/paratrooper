@@ -74,10 +74,10 @@ git pull origin {{branch}} > /dev/null;
 if [ -f {{appConfig}} ]; then
   echo 'Copying application configuration..';
   if [ -d {{appPath}}/server/ ]; then
-    cp -f "{{appConfig}}" "{{appPath}}/server/{{appConfigName}}";
+    cp -f "{{appConfig}}" "{{repoPath}}/server/{{appConfigName}}";
     echo 'Copied configuration to `{{appPath}}/server/{{appConfigName}}`.';
   else
-    cp -f "{{appConfig}}" "{{appPath}}/{{appConfigName}}";
+    cp -f "{{appConfig}}" "{{repoPath}}/{{appConfigName}}";
     echo 'Copied configuration to `{{appPath}}/{{appConfigName}}`.';
   fi;
 fi;
