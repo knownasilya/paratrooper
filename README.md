@@ -105,6 +105,15 @@ with the upstream nginx server.
 The SSH address for your deployment server, so we can setup/deploy your app.
 The user + host address of the server, i.e. `root@yourserver.com` or `myname@123.23.211.23` or `deployuser@someinstance`.
 
+#### Would you like to run an npm script after `postinstall` runs?
+
+This is a Yes/No question and will show the next question if answered 'Y' (the default answer).
+
+#### Which npm script would you like to run?
+
+Select available npm scripts that are in your package.json's `scripts` object. The
+`postinstall` and `install` scripts are filtered out of this list. This question is only asked
+if the answer to the above question is 'Y'.
 
 ## Notes
 - Following a successful deploy, `pt` will wait a further 15 seconds (to account for the configured respawn limits of upstart) to verify the app process is still alive and well.
