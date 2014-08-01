@@ -87,6 +87,11 @@ echo 'Installing application dependencies..';
 npm install > /dev/null;
 {{errorCheck 'failed to install npm dependencies'}}
 
+if {{npmScript}}; then
+  npm run {{npmScript}}
+  {{errorCheck 'failed when running `npm run {{npmScript}}`'}}
+fi;
+
 # copy the nginx and upstart config files to correct locations
 echo 'Preparing NGINX to start application..';
 sudo cp -f "{{nginxFrom}}" {{nginxTo}};
