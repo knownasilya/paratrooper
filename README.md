@@ -20,6 +20,7 @@ The remote machine must have `git`, `nginx`, `node` and `npm` installed before d
 
 
 ## Usage
+
 ```no-highlight
 pt <init|deploy|remove> [target] -d <directory>
 ```
@@ -29,6 +30,24 @@ _note: You can also use `paratrooper` instead of `pt` for verbosity._
 * Run `pt init [target]` to generate the deploy config files. You need to commit and push these files before deploying.
 * Run `pt deploy [target]` to begin a deployment.
 * Run `pt remove [target]` to stop and remove the app from the server.
+
+If you omit the `[target]` for `deploy` or `remove` commands, then you'll either get a list of
+available targets, or it will automatically select the target, if you only have one.
+
+
+## Example
+
+First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
+
+```no-highlight
+pt init
+```
+
+Commit your repo with the new deplyoment directory and it's contents, then deploy.
+
+```no-highlight
+pt deploy
+```
 
 
 ### Options
@@ -41,33 +60,23 @@ have the `name` and `repository` fields filled out before executing `pt init [ta
 Specifies the type of environment, and is an arbitrary value based on your workflow. Target is usually `alpha`, `beta`, `staging`, or `production`,
 but you are free to specify whatever value you want. Each target has it's own set of configurations. If a target isn't specified, then by default it's `production`.
 
-#### -d &lt;directory&gt;
+#### --directory &lt;path&gt; (-d)
 
 Config files are stored in the `deploy` directory unless you specify a custom directory via `-d <directory>`. Example: `pt deploy -d deployconfigs`.
 If this option is used with `pt init`, it must be used with all other commands.
 
-#### -i &lt;sshKeyFile&gt;
+#### --root-path &lt;directory&gt; (-r)
+
+Used for repos where the application root directory isn't at the root of the repository, so something like `webapp/` might be valid input for your project.
+This value defaults to the root of the repository.
+
+#### --ssh-identity-file &lt;sshKeyFile&gt; (-i)
 
 Pass through the `ssh -i` option for working with certain servers where you don't have a password, but a key file instead.
 This option is available for `deploy` and `remove` commands.
 
-### Target App Config
-
-If you create a `config.json` in your target folder, it will be copied to the app root folder in that environment, or into `/server` if that folder exists. This can be anything from db config, to any other general purpose application configuration file.
-
-## Example
-First run `pt init` and answer the questions. It will try to guess some settings for you – if you're happy with the guess, just hit enter to accept it:
-
-```no-highlight
-pt init
-```
-Commit your repo with the new deplyoment directory and it's contents, then deploy.
-
-```no-highlight
-pt deploy
-```
-
 ## Questions
+
 After running `pt init`, you'll be asked a series of questions. Here's what each answer is used for:
 
 #### What is the URL of your app?

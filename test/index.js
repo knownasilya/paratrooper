@@ -1,4 +1,6 @@
-var test = require('tape'), 
+'use strict';
+
+var test = require('prova'),
   fs = require('fs'),
   path = require('path'),
   configTests = require('./unit/config'),
