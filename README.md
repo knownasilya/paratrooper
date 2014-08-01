@@ -126,7 +126,7 @@ if the answer to the above question is 'Y'.
 
 ## Testing
 
-Tests are written using mocha/chai, and can be executed via `npm test`.
+Tests are written using [prova] (tape), and can be executed via `npm test`.
 
 ## Attribution
 
@@ -143,3 +143,4 @@ This project is based off Martin Rue's [node-deploy][3].
 [github]: https://github.com
 [bitbucket]: https://bitbucket.org
 [wiki]: https://github.com/knownasilya/paratrooper/wiki
+[prova]: https://github.com/azer/prova
