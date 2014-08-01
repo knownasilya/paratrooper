@@ -21,6 +21,7 @@ var proxyquire = require('proxyquire'),
     "cloneUrl": "http://hellotest.git",
     "branch": "master",
     "nodeEnv": "production",
+    "rootPath": "",
     "upstreamPort": 3000,
     "serverAppPath": "/var/www",
     "sitesEnabledPath": "/etc/nginx/sites-enabled",
@@ -34,7 +35,11 @@ module.exports = function (d) {
   process.chdir('test/data');
 
   d.test('generates default target', function (t) {
-    config.generate(pkg, 'deploy/test', function (answers) {
+    config.generate({
+      pkg: pkg,
+      targetPath: 'deploy/test',
+      rootPath: ''
+    }, function (answers) {
       t.deepEqual(answers, validConfig);
       t.ok(fs.existsSync('./deploy/test/paratrooper.json'));
       t.end();
