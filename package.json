@@ -19,7 +19,7 @@
     "ssh2": "^0.2.25"
   },
   "scripts": {
-    "test": "node test/index.js | tspec"
+    "test": "node test/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,7 @@
     "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
-    "proxyquire": "^0.6.0",
-    "tap-spec": "^0.1.9",
-    "tape": "^2.12.3"
+    "prova": "^1.14.0",
+    "proxyquire": "^1.0.1"
   }
 }
