@@ -87,9 +87,9 @@ echo 'Installing application dependencies..';
 npm install > /dev/null;
 {{errorCheck 'failed to install npm dependencies'}}
 
-if {{npmScript}}; then
+if [ -n "{{npmScript}}" ]; then
   npm run {{npmScript}}
-  {{errorCheck 'failed when running `npm run {{npmScript}}`'}}
+  {{errorCheck 'failed when running custom npm script'}}
 fi;
 
 # copy the nginx and upstart config files to correct locations
