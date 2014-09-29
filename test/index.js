@@ -1,11 +1,11 @@
 'use strict';
 
-var test = require('prova'),
-  fs = require('fs'),
-  path = require('path'),
-  configTests = require('./unit/config'),
-  actionsTests = require('./unit/actions'),
-  tmpDir = path.join(__dirname, 'data');
+var test = require('prova');
+var fs = require('fs');
+var path = require('path');
+var configTests = require('./unit/config');
+var actionsTests = require('./unit/actions');
+var tmpDir = path.join(__dirname, 'data');
 
 test('Unit', function (t) {
   if (!fs.existsSync(tmpDir)) {
