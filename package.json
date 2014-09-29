@@ -1,10 +1,10 @@
 {
   "name": "paratrooper",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
   "main": "./bin/paratrooper",
   "preferGlobal": "true",
-  "author": "Martin Rue",
+  "author": "Ilya Radchenko",
   "homepage": "https://github.com/knownasilya/paratrooper",
   "license": "BSD",
   "dependencies": {
