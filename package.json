@@ -2,11 +2,22 @@
   "name": "paratrooper",
   "version": "1.0.0",
   "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
-  "main": "./bin/paratrooper",
+  "main": "./lib/actions",
   "preferGlobal": "true",
   "author": "Ilya Radchenko",
   "homepage": "https://github.com/knownasilya/paratrooper",
   "license": "BSD",
+  "bin": {
+    "pt": "./bin/paratrooper",
+    "paratrooper": "./bin/paratrooper"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knownasilya/paratrooper.git"
+  },
   "dependencies": {
     "chalk": "^0.5.1",
     "glob": "^4.0.5",
@@ -17,17 +28,6 @@
     "omelette": "^0.3.1",
     "readable-stream": "^1.0.27-1",
     "ssh2": "^0.3.4"
-  },
-  "scripts": {
-    "test": "node test/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/knownasilya/paratrooper.git"
-  },
-  "bin": {
-    "pt": "./bin/paratrooper",
-    "paratrooper": "./bin/paratrooper"
   },
   "devDependencies": {
     "prova": "^1.14.0",
