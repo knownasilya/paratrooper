@@ -16,7 +16,8 @@ npm install -g paratrooper
 
 ## Prerequisites
 
-The remote machine must have `git`, `nginx`, `node` and `npm` installed before deployments can be made to it. The machine should also be configured for remote access via ssh. See the [wiki][wiki] for more information.
+The remote machine must have `git`, `nginx`, `node` and `npm` installed before deployments can be made to it.
+The machine should also be configured for remote access via ssh. See the [wiki][wiki] for more information.
 
 
 ## Usage
