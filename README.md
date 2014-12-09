@@ -6,6 +6,8 @@
 A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 Tested with [Github][github] and [Bitbucket][bitbucket] repositories.
 
+[![NPM](https://nodei.co/npm/paratrooper.png?downloads=true&stars=true)](https://nodei.co/npm/paratrooper/)
+
 
 ## Installation
 
