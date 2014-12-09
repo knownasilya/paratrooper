@@ -7,6 +7,14 @@
   "author": "Ilya Radchenko",
   "homepage": "https://github.com/knownasilya/paratrooper",
   "license": "BSD",
+  "keywords": [
+    "node",
+    "deployment",
+    "deploy",
+    "nginx",
+    "cli tool",
+    "upstart"
+  ],
   "bin": {
     "pt": "./bin/paratrooper",
     "paratrooper": "./bin/paratrooper"
