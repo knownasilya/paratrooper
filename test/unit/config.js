@@ -35,7 +35,7 @@ config = proxyquire('../../lib/config', {
 });
 
 module.exports = function (d) {
-  var root = process.cwd();  
+  var root = process.cwd();
 
   process.chdir('test/data');
 
@@ -48,7 +48,7 @@ module.exports = function (d) {
       t.deepEqual(answers, validConfig);
       t.ok(fs.existsSync('./deploy/test/paratrooper.json'));
       t.end();
-    });    
+    });
 
   });
 
