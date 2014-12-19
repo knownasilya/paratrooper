@@ -1,6 +1,6 @@
 {
   "name": "paratrooper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Deployment CLI for Node on Ubuntu (nginx & upstart) with Git",
   "main": "./lib/actions",
   "preferGlobal": "true",
