@@ -5,6 +5,6 @@ console owner
 chdir "{{serverAppPath}}/{{appName}}"
 env NODE_ENV={{nodeEnv}}
 env PORT={{upstreamPort}}
-exec npm start >> /var/log/{{appName}}.log 2>&1
+exec nave use {{nodeVersion}} npm start >> /var/log/{{appName}}.log 2>&1
 respawn
 respawn limit 5 15

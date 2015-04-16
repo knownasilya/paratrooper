@@ -4,13 +4,30 @@ check_upstart_service(){
   pgrep "$1" > /dev/null 2>&1
 }
 
-echo 'Installing server dependencies..';
+echo 'Checking server dependencies..';
 for dependency in nginx git node npm; do
-if ! command -v $dependency 2> /dev/null; then
-  echo error: server missing one of the following dependencies: nginx, git, node or npm;
-  exit 1;
-fi;
+  if ! command -v $dependency >/dev/null; then
+    echo error: server missing one of the following dependencies: nginx, git, node or npm;
+    exit 1;
+  fi;
 done;
+
+# Install nave if not found
+if ! command -v nave > /dev/null; then
+  echo 'Did not find nave. Installing nave..';
+  sudo npm install nave -g;
+  {{errorCheck 'Failed to install nave'}}
+fi
+
+# If nodeVersion is installed, use that, otherwise install it
+node --version | grep {{nodeVersion}};
+
+# Install node version if not already present
+if [[ $? != 0 ]]; then
+  echo 'Installing Node version `{{nodeVersion}}`...';
+  nave install {{nodeVersion}};
+  {{errorCheck 'Failed to install specified Node version'}}
+fi
 
 # check the supplied sites-enabled path is valid
 if [ ! -d "{{sitesEnabledPath}}" ]; then
@@ -84,11 +101,11 @@ fi;
 
 # install missing npm dependencies
 echo 'Installing application dependencies..';
-npm install > /dev/null;
+nave use {{nodeVersion}} npm install > /dev/null;
 {{errorCheck 'failed to install npm dependencies'}}
 
 if [ -n "{{npmScript}}" ]; then
-  npm run {{npmScript}}
+  nave use {{nodeVersion}} npm run {{npmScript}};
   {{errorCheck 'failed when running custom npm script'}}
 fi;
 
