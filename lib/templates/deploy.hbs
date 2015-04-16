@@ -92,14 +92,18 @@ if [ -n "{{npmScript}}" ]; then
   {{errorCheck 'failed when running custom npm script'}}
 fi;
 
-# copy the nginx and upstart config files to correct locations
-echo 'Preparing NGINX to start application..';
-sudo cp -f "{{nginxFrom}}" {{nginxTo}};
-sudo cp -f "{{upstartFrom}}" {{upstartTo}};
-
-# reload nginx config
-sudo nginx -s reload > /dev/null;
-{{errorCheck 'failed to reload nginx configuration'}}
+# copy the nginx and upstart config files to correct locations, if missing
+if [ ! -f {{upstartTo}} ]; then
+  echo 'Setting up Upstart config..';
+  sudo cp -f "{{upstartFrom}}" {{upstartTo}};
+fi
+if [ ! -f {{nginxTo}} ]; then
+  echo 'Preparing NGINX to start application..';
+  sudo cp -f "{{nginxFrom}}" {{nginxTo}};
+  # reload nginx config
+  sudo nginx -s reload > /dev/null;
+  {{errorCheck 'failed to reload nginx configuration'}}
+fi
 
 # start a new app instance
 if check_upstart_service {{appName}}; then
