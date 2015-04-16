@@ -98,6 +98,11 @@ This is the git branch that you want your application source to be cloned/pulled
 
 This is usually `production` or maybe `development`, and dictates how your app is built or served.
 
+#### What version of Node.js would you like to use?
+
+Supports Node.js and io.js. Be default it's set to `latest`, which will be the latest version of io.js.
+If you specify anything below 1.0, it will install Node.js, otherwise io.js.
+
 #### What port is your app listening on?
 
 The port the node app listens on. This is needed to properly link the node process
