@@ -9,6 +9,7 @@
   "license": "BSD",
   "keywords": [
     "node",
+    "iojs",
     "deployment",
     "deploy",
     "nginx",
