@@ -3,7 +3,7 @@
 > They are used for tactical advantage as they can be inserted into the battlefield from the air, 
 > thereby allowing them to be positioned in areas not accessible by land. -- [Wikipedia][4]
 
-A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
+A CLI tool for deploying a node/iojs web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 Tested with [Github][github] and [Bitbucket][bitbucket] repositories.
 
 [![NPM][npm-badge]][npm-badge-url]  
