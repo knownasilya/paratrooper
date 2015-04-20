@@ -1,4 +1,4 @@
-# paratrooper [![Build Status][1]][2] [![NPM version][5]][6] [![Dependencies][7]][8]
+# paratrooper
 
 > They are used for tactical advantage as they can be inserted into the battlefield from the air, 
 > thereby allowing them to be positioned in areas not accessible by land. -- [Wikipedia][4]
@@ -6,7 +6,8 @@
 A CLI tool for deploying a node web app to an Ubuntu server with nginx, upstart and git, in a simple way.
 Tested with [Github][github] and [Bitbucket][bitbucket] repositories.
 
-[![NPM](https://nodei.co/npm/paratrooper.png?downloads=true&stars=true)](https://nodei.co/npm/paratrooper/)
+[![NPM][npm-badge]][npm-badge-url]  
+[![Build Status][1]][2] [![NPM version][5]][6] [![Dependencies][7]][8]
 
 
 ## Installation
@@ -152,3 +153,5 @@ This project is based off Martin Rue's [node-deploy][3].
 [bitbucket]: https://bitbucket.org
 [wiki]: https://github.com/knownasilya/paratrooper/wiki
 [prova]: https://github.com/azer/prova
+[npm-badge-url]: https://nodei.co/npm/paratrooper/
+[npm-badge]: https://nodei.co/npm/paratrooper.png?downloads=true&stars=true
