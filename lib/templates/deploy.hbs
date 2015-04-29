@@ -101,7 +101,7 @@ fi;
 
 # install missing npm dependencies
 echo 'Installing application dependencies..';
-nave use {{nodeVersion}} npm install > /dev/null;
+nave use {{nodeVersion}} npm install {{npmInstallArguments}} {{#unless debug}} > /dev/null{{/unless}};
 {{errorCheck 'failed to install npm dependencies'}}
 
 if [ -n "{{npmScript}}" ]; then
