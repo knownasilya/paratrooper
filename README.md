@@ -124,6 +124,28 @@ Select available npm scripts that are in your package.json's `scripts` object. T
 `postinstall` and `install` scripts are filtered out of this list. This question is only asked
 if the answer to the above question is 'Y'.
 
+## `.paratrooperrc`
+
+Paratrooper also supports a `.paratrooperrc` file in your project's top level directory.
+By default this file looks like ths:
+
+```json
+{
+  "directory": "deploy",
+  "rootPath": "",
+  "user": "",
+  "sshIdentityFile": "",
+  "debug": false
+}
+```
+
+_Note: You might have noticed, but the properties in this file map to
+the arguments available in the CLI._
+
+Options specified in this file will be the new defaults for the given project, unless
+you explicitly set the matching arguments when using the CLI commands.
+
+
 ## Notes
 - Following a successful deploy, `pt` will wait a further 15 seconds (to account for the configured respawn limits of upstart) to verify the app process is still alive and well.
 
