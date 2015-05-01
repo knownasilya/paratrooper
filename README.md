@@ -127,7 +127,7 @@ if the answer to the above question is 'Y'.
 ## `.paratrooperrc`
 
 Paratrooper also supports a `.paratrooperrc` file in your project's top level directory.
-By default this file looks like ths:
+By default this file looks like this:
 
 ```json
 {
