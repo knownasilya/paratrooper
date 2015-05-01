@@ -143,7 +143,8 @@ _Note: You might have noticed, but the properties in this file map to
 the arguments available in the CLI._
 
 Options specified in this file will be the new defaults for the given project, unless
-you explicitly set the matching arguments when using the CLI commands.
+you explicitly set the matching arguments when using the CLI commands. See the [Liftoff] repo
+for more details and available arguments.
 
 
 ## Notes
@@ -177,3 +178,4 @@ This project is based off Martin Rue's [node-deploy][3].
 [prova]: https://github.com/azer/prova
 [npm-badge-url]: https://nodei.co/npm/paratrooper/
 [npm-badge]: https://nodei.co/npm/paratrooper.png?downloads=true&stars=true
+[Liftoff]: https://github.com/tkellen/js-liftoff
