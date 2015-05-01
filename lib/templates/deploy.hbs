@@ -25,7 +25,7 @@ node --version | grep {{nodeVersion}};
 # Install node version if not already present
 if [[ $? != 0 ]]; then
   echo 'Installing Node version `{{nodeVersion}}`...';
-  nave install {{nodeVersion}};
+  nave install {{nodeVersion}}{{verbose debug}};
   {{errorCheck 'Failed to install specified Node version'}}
 fi
 
@@ -55,13 +55,13 @@ echo -e 'Host github.com\n\tStrictHostKeyChecking no\n\tForwardAgent yes\nHost b
 # stop any existing app instance
 if check_upstart_service {{appName}}; then
   echo 'Stopping previously running application instances..';
-  sudo stop {{appName}} > /dev/null;
+  sudo stop {{appName}}{{verbose debug}};
 fi;
 
 # if there's no repo, clone it for the first time
 if [ ! -d "{{repoPath}}" ]; then
   echo 'Cloning project for the first time..';
-  git clone {{cloneUrl}} "{{repoPath}}" > /dev/null;
+  git clone {{cloneUrl}} "{{repoPath}}"{{verbose debug}};
   {{errorCheck errors.cloning}}
 fi;
 
@@ -70,21 +70,22 @@ cd "{{appPath}}";
 
 # fetch upstream changes on all branches
 echo 'Updating project with latest changes..';
-git fetch > /dev/null;
+git fetch --all{{verbose debug}};
 {{errorCheck 'failed to fetch upstream changes'}}
 
 # create tracking branch – may fail if there's already one, but that's ok
-git branch {{branch}} origin/{{branch}} > /dev/null;
+git branch {{branch}} origin/{{branch}}{{verbose debug}};
 
 # checkout new/existing tracking branch
-git checkout {{branch}} > /dev/null;
+git reset --hard origin/{{branch}}{{verbose debug}};
+git checkout {{branch}}{{verbose debug}};
 {{errorCheck errors.branchCheckout}}
 
 # clean project directory
-git clean -xdf
+git clean -xdf;
 
 # pull latest changes from branch
-git pull origin {{branch}} > /dev/null;
+git pull origin {{branch}}{{verbose debug}};
 {{errorCheck errors.branchPull}}
 
 # copy app config script if exists
@@ -101,7 +102,7 @@ fi;
 
 # install missing npm dependencies
 echo 'Installing application dependencies..';
-nave use {{nodeVersion}} npm install > /dev/null;
+nave use {{nodeVersion}} npm install {{npmInstallArguments}}{{verbose debug}};
 {{errorCheck 'failed to install npm dependencies'}}
 
 if [ -n "{{npmScript}}" ]; then
@@ -118,14 +119,14 @@ if [ ! -f {{nginxTo}} ]; then
   echo 'Preparing NGINX to start application..';
   sudo cp -f "{{nginxFrom}}" {{nginxTo}};
   # reload nginx config
-  sudo nginx -s reload > /dev/null;
+  sudo nginx -s reload{{verbose debug}};
   {{errorCheck 'failed to reload nginx configuration'}}
 fi
 
 # start a new app instance
 if check_upstart_service {{appName}}; then
   echo 'Starting application..';
-  sudo start {{appName}} > /dev/null;
+  sudo start {{appName}}{{verbose debug}};
   {{errorCheck 'application failed to start'}}
 fi;
 exit;
