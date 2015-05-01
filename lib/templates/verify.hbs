@@ -1,4 +1,4 @@
 #! /bin/bash
 
-initctl status "{{appName}}" | grep process > /dev/null;
+initctl status "{{appName}}" | grep process{{verbose debug}};
 {{errorCheck 'application failed to start'}}
