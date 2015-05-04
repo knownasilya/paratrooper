@@ -37,7 +37,8 @@
     "mkdirp": "^0.5.0",
     "omelette": "^0.3.1",
     "readable-stream": "^1.0.33",
-    "ssh2": "^0.4.6"
+    "ssh2": "^0.4.6",
+    "update-notifier": "^0.4.0"
   },
   "devDependencies": {
     "prova": "^2.1.1",
