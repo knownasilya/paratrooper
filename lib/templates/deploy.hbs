@@ -106,7 +106,7 @@ nave use {{nodeVersion}} npm install {{npmInstallArguments}}{{verbose debug}};
 {{errorCheck 'failed to install npm dependencies'}}
 
 if [ -n "{{npmScript}}" ]; then
-  nave use {{nodeVersion}} npm run {{npmScript}};
+  sudo nave use {{nodeVersion}} npm run {{npmScript}};
   {{errorCheck 'failed when running custom npm script'}}
 fi;
 
