@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require('babel/register');
+
 var cli = require('../lib/cli');
 
 cli(function (program) {
